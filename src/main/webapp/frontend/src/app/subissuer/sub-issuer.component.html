@@ -1,0 +1,141 @@
+<form [formGroup]="subIssuerForm" (ngSubmit)="sendSubIssuerData()">
+  <div class="container-fluid">
+    <div class="row bg-grey">
+      <div class="col text-center">
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4"></div>
+      <div class="col-md-4 text-center">
+
+        <div class="form-group">
+          <label for="acsId">AcsId</label>
+          <input type="text" id="acsId" formControlName="acsId" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="authenticationTimeOut">AuthenticationTimeOut</label>
+          <input type="number" id="authenticationTimeOut" formControlName="authenticationTimeOut" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="defaultLanguage">DefaultLanguage</label>
+          <input type="text" id="defaultLanguage" formControlName="defaultLanguage" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="code">Code</label>
+          <input type="text" id="code" formControlName="code" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="codeSvi">CodeSvi</label>
+          <input type="text" id="codeSvi" formControlName="codeSvi" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="currencyCode">CurrencyCode</label>
+          <input type="text" id="currencyCode" formControlName="currencyCode" class="form-control">
+        </div>
+
+        <!--  TODO personnalDataStorage -->
+
+
+<!--        <div class="form-group" style="margin-top: 15px;">-->
+
+<!--          <input style="height: 16px; width: 16px"-->
+<!--                 type="checkbox" id="personnalDataStorage"-->
+<!--                 formControlName="personnalDataStorage" class="form-control">-->
+
+<!--          <label for="personnalDataStorage">PersonalDataStorage</label><br>-->
+<!--        </div>-->
+
+
+        <!--        TODO -->
+
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control">
+        </div>
+
+
+        <div class="form-group">
+          <label for="label">Label</label>
+          <input type="text" id="label" formControlName="label" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="authentMeans">AuthentMeans</label>
+          <input type="text" id="authentMeans" formControlName="authentMeans" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-md-4"></div>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row text-center mt-2">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <button type="submit" [disabled]="!subIssuerForm.valid" class="btn btn-primary btn-block">Generate SQL Script
+        </button>
+      </div>
+
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <div class="row  text-center" style="margin-top: 25px;" *ngIf="filename">
+    <div class="col">
+      <button class="btn-outline-success" type="button" (click)="downloadFile()">Download - {{filename}}</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="container-fluid" style="margin-top: 150px;">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">AcsId</th>
+          <th scope="col">AuthenticationTimeOut</th>
+          <th scope="col">DefaultLanguage</th>
+          <th scope="col">Code</th>
+          <th scope="col">CodeSvi</th>
+          <th scope="col">CurrencyCode</th>
+          <th scope="col">PersonnalDataStorage</th>
+          <th scope="col">Name</th>
+          <th scope="col">AuthentMeans</th>
+          <th scope="col">Label</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let subIssuer of subIssuers;">
+          <th scope="row">{{ subIssuer.id }}</th>
+          <td>{{ subIssuer.acsId }}</td>
+          <td>{{ subIssuer.authenticationTimeOut }}</td>
+          <td>{{ subIssuer.defaultLanguage }}</td>
+          <td>{{ subIssuer.code }}</td>
+          <td>{{ subIssuer.codeSvi }}</td>
+          <td>{{ subIssuer.currencyCode }}</td>
+          <td>{{ subIssuer.personnalDataStorage }}</td>
+          <td>{{ subIssuer.name }}</td>
+          <td>{{ subIssuer.authentMeans }}</td>
+          <td>{{ subIssuer.label }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+</div>
+
+
